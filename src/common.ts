@@ -1,4 +1,3 @@
-'use strict'
 // **Github:** https://github.com/fidm/x509
 //
 // **License:** MIT
@@ -6,6 +5,8 @@
 /**
  * BufferVisitor is a visit tool to manipulate buffer.
  */
+import Buffer from 'buffer';
+
 export class BufferVisitor {
   start: number
   end: number

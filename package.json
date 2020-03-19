@@ -23,7 +23,9 @@
     "JavaScript",
     "node"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "buffer": "^5.5.0"
+  },
   "devDependencies": {
     "@types/node": "^11.10.4",
     "istanbul": "^1.1.0-alpha.1",

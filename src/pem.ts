@@ -4,6 +4,7 @@
 // **License:** MIT
 
 import { inspect } from 'util'
+import Buffer from 'buffer';
 
 const pemLineLength = 64
 const pemStart = '-----BEGIN '

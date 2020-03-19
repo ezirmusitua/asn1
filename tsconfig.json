@@ -3,7 +3,7 @@
   "compilerOptions": {
     "target": "es2018",
     "module": "commonjs",
-    "moduleResolution": "node",
+    // "moduleResolution": "node",
     "outDir": "./build",
     "typeRoots": [
       "node_modules/@types"

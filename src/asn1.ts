@@ -5,6 +5,7 @@
 
 import { inspect } from 'util'
 import { BufferVisitor } from './common'
+import Buffer from 'buffer';
 
 /**
  * Template is use to create schema of ASN.1 object for `asn1.validate` method.
