@@ -5,23 +5,24 @@
 /**
  * BufferVisitor is a visit tool to manipulate buffer.
  */
-import Buffer from 'buffer';
+
+import { Buffer } from "buffer";
 
 export class BufferVisitor {
-  start: number
-  end: number
-  readonly buf: Buffer
-  constructor (buf: Buffer, start: number = 0, end: number = 0) {
-    this.start = start
-    this.end = end > start ? end : start
-    this.buf = buf
+  start: number;
+  end: number;
+  readonly buf: Buffer;
+  constructor(buf: Buffer, start: number = 0, end: number = 0) {
+    this.start = start;
+    this.end = end > start ? end : start;
+    this.buf = buf;
   }
 
   /**
    * return the underlying buffer length
    */
-  get length () {
-    return this.buf.length
+  get length() {
+    return this.buf.length;
   }
 
   /**
@@ -29,24 +30,24 @@ export class BufferVisitor {
    * @param start
    * @param end
    */
-  reset (start: number = 0, end: number = 0): this {
-    this.start = start
+  reset(start: number = 0, end: number = 0): this {
+    this.start = start;
     if (end >= this.start) {
-      this.end = end
+      this.end = end;
     } else if (this.end < this.start) {
-      this.end = this.start
+      this.end = this.start;
     }
-    return this
+    return this;
   }
 
   /**
    * consume some bytes.
    * @param steps steps to walk
    */
-  walk (steps: number): this {
-    this.start = this.end
-    this.end += steps
-    return this
+  walk(steps: number): this {
+    this.start = this.end;
+    this.end += steps;
+    return this;
   }
 
   /**
@@ -55,16 +56,16 @@ export class BufferVisitor {
    * @param steps steps to consume.
    * @param message message to throw.
    */
-  mustHas (steps: number, message: string = 'Too few bytes to parse.'): this {
-    const requested = this.end + steps
+  mustHas(steps: number, message: string = "Too few bytes to parse."): this {
+    const requested = this.end + steps;
     if (requested > this.buf.length) {
-      const error = new Error(message) as any
-      error.available = this.buf.length
-      error.requested = requested
-      throw error
+      const error = new Error(message) as any;
+      error.available = this.buf.length;
+      error.requested = requested;
+      throw error;
     }
-    this.walk(0)
-    return this
+    this.walk(0);
+    return this;
   }
 
   /**
@@ -72,9 +73,9 @@ export class BufferVisitor {
    * @param steps steps to consume.
    * @param message message to throw.
    */
-  mustWalk (steps: number, message?: string): this {
-    this.mustHas(steps, message)
-    this.walk(steps)
-    return this
+  mustWalk(steps: number, message?: string): this {
+    this.mustHas(steps, message);
+    this.walk(steps);
+    return this;
   }
 }
